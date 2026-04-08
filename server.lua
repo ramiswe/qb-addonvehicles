@@ -1,11 +1,20 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+RegisterNetEvent("qb-addonvehicles:server:GiveVehicleMenu", function(model)
+    print("^3SERVER RECIBIÓ MODELO:^7", model)
+    local src = source
+    TriggerClientEvent("qb-addonvehicles:client:GiveVehicle", src, model)
+end)
+
+-- Cargar lista manual
 CreateThread(function()
     for model, data in pairs(QBAddonVehicles) do
         QBCore.Shared.Vehicles[model] = data
     end
+    print("^2[qb-addonvehicles]^7 Vehículos addon cargados:", #QBAddonVehicles)
 end)
 
+-- Comando /givecar
 QBCore.Commands.Add("givecar", "Dar coche addon a un jugador", {
     {name="id", help="ID del jugador"},
     {name="model", help="Modelo del coche addon"}
@@ -28,7 +37,7 @@ QBCore.Commands.Add("givecar", "Dar coche addon a un jugador", {
     TriggerClientEvent('qb-addonvehicles:client:GiveVehicle', targetId, model)
 end, "admin")
 
-
+-- Registro en DB
 RegisterNetEvent('qb-addonvehicles:server:RegisterVehicle', function(plate, model)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -59,3 +68,9 @@ RegisterNetEvent('qb-addonvehicles:server:RegisterVehicle', function(plate, mode
             '{}'
         })
 end)
+
+RegisterNetEvent("qb-addonvehicles:server:PreviewVehicle", function(model)
+    local src = source
+    TriggerClientEvent("qb-addonvehicles:client:PreviewVehicle", src, model)
+end)
+

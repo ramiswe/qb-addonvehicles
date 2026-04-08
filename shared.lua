@@ -1,6 +1,6 @@
 QBAddonVehicles = {
 
-    -- Acura
+  -- Acura
     ['tltypes'] = { name = 'Acura TL Type-S', brand = 'Acura', price = 35000, category = 'sedan', hash = 'tltypes', shop = 'custom' },
 
     -- Aston Martin
@@ -233,6 +233,5 @@ QBAddonVehicles = {
     -- Volvo
     ['xc90'] = { name = 'Volvo XC90', brand = 'Volvo', price = 70000, category = 'suv', hash = 'xc90', shop = 'custom' },
     ['s60'] = { name = 'Volvo S60', brand = 'Volvo', price = 40000, category = 'sedan', hash = 's60', shop = 'custom' },
-
 
 }
